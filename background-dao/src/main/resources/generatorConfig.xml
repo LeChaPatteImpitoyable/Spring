@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!-- 配置文件路径 -->
+    <properties resource="generatorConfig.properties"/>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
+
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+            <property name="javaFileEncoding" value="UTF-8"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="${jdbc.driver}"
+                        connectionURL="${jdbc.url}"
+                        userId="${jdbc.username}"
+                        password="${jdbc.password}">
+        </jdbcConnection>
+
+<!--      
+        默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer    
+            true，把JDBC DECIMAL 和 NUMERIC 类型解析为java.math.BigDecimal      
+        --> 
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="${model.package}" targetProject="${target.project}">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <property name="javaExampleTargetPackage" value="${model.package}"/>
+            <property name="javaExampleTargetProject" value="${target.project}"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="${xml.package}"  targetProject="${xml.target.project}">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+        
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="${mapper.package}"
+                             targetProject="${target.project}">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+<!--         <table tableName="warehouse" > -->
+<!--             <generatedKey column="id" sqlStatement="Mysql" type="post" identity="true"/> -->
+<!--         </table> -->
+        <!-- 列出要生成代码的所有表，这里配置的是不生成Example文件 -->    
+        <table tableName="region" domainObjectName="Region"    
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"    
+               enableSelectByExample="false" selectByExampleQueryId="false" >    
+            <!-- 如果设置为true，生成的model类会直接使用column本身的名字，而不会再使用驼峰命名方法，
+            		比如BORN_DATE，生成的属性名字就是BORN_DATE,而不会是bornDate -->
+<!--             <property name="useActualColumnNames" value="false"/>  -->
+<!--             <generatedKey column="id" sqlStatement="MySql" identity="true" /> -->
+        </table>
+
+    </context>
+</generatorConfiguration>

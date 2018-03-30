@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+    
+    <!-- console appender -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">   
+    	<encoder>   
+      		<pattern>%d-[xmen.greentown] %p %t %c - %m%n</pattern>
+    	</encoder>
+    </appender>
+    
+    <!-- output file appender -->
+	<appender name="F1"  class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- path need to specified at deploy shell  -->
+		<file>/home/admin/deploy/greentown-tomcat/logs/xmen-greentown.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>/home/admin/deploy/greentown-tomcat/logs/xmen-greentown.log.%d{yyyy-MM-dd}</FileNamePattern>
+            <MaxHistory>30</MaxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder"> 
+            <pattern>%d-[xmen] %p %t %c - %m%n</pattern>   
+        </encoder>
+    </appender>
+
+	<!-- root -->
+    <root level="INFO">
+    	<appender-ref ref="STDOUT" />
+    	<appender-ref ref="F1" />
+ 	</root>
+</configuration>

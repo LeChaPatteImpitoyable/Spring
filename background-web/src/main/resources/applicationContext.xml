@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	 		http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd
+    		http://www.springframework.org/schema/beans    
+	        http://www.springframework.org/schema/beans/spring-beans.xsd 
+	        http://www.springframework.org/schema/aop 
+			http://www.springframework.org/schema/aop/spring-aop.xsd
+			http://www.springframework.org/schema/task 
+			http://www.springframework.org/schema/task/spring-task-4.1.xsd">
+	<!-- =========== set properties =========== -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:backend-service-test.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 自动扫描 api和service -->
+	<!--<context:component-scan base-package="com.ying.xman.backend.services">-->
+
+		<!--<context:include-filter type="regex"-->
+			<!--expression="com.ying.xman.backend.services.*.impl" />-->
+
+		<!--<context:include-filter type="regex"-->
+			<!--expression="com.ying.xman.backend.api.action" />-->
+	<!--</context:component-scan>-->
+
+	<!-- 开启扫描 将api注入
+		 ApiInfo中有@Component 其实现类都将被扫描到
+		 且不能单独扫描其子类所在的包，ApiInfo也必须在范围内
+		 不然无法扫到继承实现关系就无法产生对象实例
+		 -->
+
+
+	<context:component-scan base-package="com.ying.xman.backend"></context:component-scan>
+	
+	<!--<bean id="apiEngine" class="com.ying.xman.backend.api.engine.ApiEngineImpl" />-->
+	<!--<bean id="apiRegistry" class="com.ying.xman.backend.api.framework.ApiRegistryImpl" />-->
+	<!--<bean id="apiLifecycle" class="com.ying.xman.backend.api.framework.ApiLifecycleImpl" />-->
+
+	<!--使用aspectj创建aop  -->
+	<aop:aspectj-autoproxy/>
+
+	<bean id="logAspect" class="com.ying.xman.backend.aspect.LoggerAspect" />
+
+	<!-- aop to print logs -->
+	<!--<aop:config>-->
+		<!--<aop:pointcut id="logPoint"-->
+					  <!--expression="execution(* com.ying.xman.backend.services.*.impl.*.*(..))" />-->
+		<!--<aop:aspect id="logAspect" ref="logAspect">-->
+			<!--&lt;!&ndash;<aop:around method="logAround" pointcut-ref="logPoint" />&ndash;&gt;-->
+			<!--<aop:before method="before" pointcut-ref="logPoint"/>-->
+		<!--</aop:aspect>-->
+	<!--</aop:config>-->
+</beans>

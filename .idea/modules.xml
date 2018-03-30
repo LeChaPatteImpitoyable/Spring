@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/background-api/background-api.iml" filepath="$PROJECT_DIR$/background-api/background-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/background-common/background-common.iml" filepath="$PROJECT_DIR$/background-common/background-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/background-dao/background-dao.iml" filepath="$PROJECT_DIR$/background-dao/background-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/background-service/background-service.iml" filepath="$PROJECT_DIR$/background-service/background-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/background-web/background-web.iml" filepath="$PROJECT_DIR$/background-web/background-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/teacher-dev.iml" filepath="$PROJECT_DIR$/.idea/teacher-dev.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="background-web:war">
+    <output-path>$PROJECT_DIR$/background-web/target</output-path>
+    <root id="archive" name="teacher.war">
+      <element id="artifact" artifact-name="background-web:war exploded" />
+    </root>
+  </artifact>
+</component>

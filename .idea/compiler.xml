@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="background-api" />
+        <module name="background-common" />
+        <module name="background-dao" />
+        <module name="background-service" />
+        <module name="background-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="background-api" target="1.7" />
+      <module name="background-common" target="1.7" />
+      <module name="background-dao" target="1.7" />
+      <module name="background-service" target="1.7" />
+      <module name="background-web" target="1.7" />
+      <module name="teacher-dev" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
